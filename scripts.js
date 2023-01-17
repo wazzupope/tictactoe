@@ -1,5 +1,5 @@
 /*
-gameboard is an array inside of gameboard object
+x gameboard is an array inside of gameboard object
 players will also be objects (just player A and player B to start, both to be controlled by human, later can add functionality for CPU)
 object to store the flow of the game itself
 try to have everything inside a module or factory
@@ -19,3 +19,20 @@ display element that congratulates the winner
 optional - create AI opponent
 */
 
+const gameBoard = () => {
+  const zero = document.querySelector('#zero');
+  const one = document.querySelector('#one');
+  const two = document.querySelector('#two');
+  const three = document.querySelector('#three');
+  const four = document.querySelector('#four');
+  const five = document.querySelector('#five');
+  const six = document.querySelector('#six');
+  const seven = document.querySelector('#seven');
+  const eight = document.querySelector('#eight');
+  const boardArray = [zero, one, two, three, four, five, six, seven, eight];
+  return boardArray;
+};
+
+const playerFactory = () => {
+  
+}
