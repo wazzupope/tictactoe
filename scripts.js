@@ -6,7 +6,7 @@ try to have everything inside a module or factory
 if you need one of something, put it in a module
 if you need more than one, put it in a factory
 
-create html table for game board
+x create html table for game board
 write js function that will fill the gameboard on the page with the contents of the gameboard array
 write functions that allow players to click a part of the gameboard and place an x or o in the DOM
 make sure they are unable to put a mark in a box that already has a mark (remove eventListener)
@@ -31,8 +31,45 @@ const gameBoard = () => {
   const eight = document.querySelector('#eight');
   const boardArray = [zero, one, two, three, four, five, six, seven, eight];
   return boardArray;
+  // add eventListeners to each cell
 };
 
 const playerFactory = () => {
-  
-}
+  // creates a player with a name input from a form
+  // gives that player attributes like name, game piece character, turn (first or second)
+};
+
+const currentBoard = () => {
+  // takes boardArray and creates an updated version of it each time that makeMove is run
+};
+
+const makeMove = (cell) => {
+ // take which cell was clicked and update currentBoard
+ // write textContent of which player (x or o) clicked it
+ // then disable the event listener on that cell
+ // then change to the other player's move
+ // then run function of checkWin
+};
+
+const checkWin = () => {
+  // check all winning scenarios (need to write out what these are, each an array within an array containing all the scenarios)
+  // if won, run gameWon
+  // if not, check if all cells full
+  // if full, run gameTied
+};
+
+const gameWon = () => {
+  // display who won game and highlight the cells with the winning 3 in a row
+  // make sure the display has a reset button (can put one in the gameWon display or put it somewhere visible/clickable outside gameWon display)
+  // reset button runs reset
+};
+
+const gameTied = () => {
+  // display that game was tied and refer to gameWon comments for reset
+};
+
+const reset = () => {
+  // clears all cells
+  // re-enables all eventListeners that were disabled
+  // should probably loop through the currentBoard array to make this happen
+};
