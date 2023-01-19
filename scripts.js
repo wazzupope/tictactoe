@@ -20,18 +20,30 @@ optional - create AI opponent
 */
 
 const gameBoard = () => {
+  // Variables for each cell with event listeners
   const zero = document.querySelector('#zero');
+  zero.addEventListener('click', makeMove);
   const one = document.querySelector('#one');
+  one.addEventListener('click', makeMove);
   const two = document.querySelector('#two');
+  two.addEventListener('click', makeMove);
   const three = document.querySelector('#three');
+  three.addEventListener('click', makeMove);
   const four = document.querySelector('#four');
+  four.addEventListener('click', makeMove);
   const five = document.querySelector('#five');
+  five.addEventListener('click', makeMove);
   const six = document.querySelector('#six');
+  six.addEventListener('click', makeMove);
   const seven = document.querySelector('#seven');
+  seven.addEventListener('click', makeMove);
   const eight = document.querySelector('#eight');
+  eight.addEventListener('click', makeMove);
+
+  // Array from each cell
   const boardArray = [zero, one, two, three, four, five, six, seven, eight];
   return boardArray;
-  // add eventListeners to each cell
+  // does makeMove need to be within this object to honor what the instructions say?
 };
 
 const playerFactory = () => {
