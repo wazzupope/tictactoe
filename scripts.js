@@ -44,11 +44,19 @@ const gameBoard = () => {
   const boardArray = [zero, one, two, three, four, five, six, seven, eight];
   return boardArray;
   // does makeMove need to be within this object to honor what the instructions say?
+  // display a form on page load to take in player a and player b names, who will be x and who will be o, and who goes first
+  // on submit (create button with eventlistener) run playerFactory with (name, indicator, turn) as arguments, taken from form
 };
 
-const playerFactory = () => {
-  // creates a player with a name input from a form
-  // gives that player attributes like name, game piece character, turn (first or second)
+const playerFactory = (name, indicator, turn) => {
+  const getName = () => name;
+  const getIndicator = () => indicator;
+  const getTurn = () => {
+    if (turn === "1st") {
+      return "1st";
+    }
+      return "2nd";
+  };
 };
 
 const currentBoard = () => {
@@ -83,5 +91,6 @@ const gameTied = () => {
 const reset = () => {
   // clears all cells
   // re-enables all eventListeners that were disabled
-  // should probably loop through the currentBoard array to make this happen
+  // displays initial form for name input, etc.
+  // should probably loop through the currentBoard array to make this happen - or does gameBoard do all of this?
 };
