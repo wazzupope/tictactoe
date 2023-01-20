@@ -19,26 +19,19 @@ display element that congratulates the winner
 optional - create AI opponent
 */
 
-const gameBoard = () => {
+const makeMove = (event) => {
+  console.log(event.target);
+ // take which cell was clicked and update currentBoard
+ // write textContent of which player (x or o) clicked it
+ // then disable the event listener on that cell
+ // then change to the other player's move
+ // then run function of checkWin
+};
+
+const gameBoard = (() => {
   // Variables for each cell with event listeners
-  const zero = document.querySelector('#zero');
-  zero.addEventListener('click', makeMove);
-  const one = document.querySelector('#one');
-  one.addEventListener('click', makeMove);
-  const two = document.querySelector('#two');
-  two.addEventListener('click', makeMove);
-  const three = document.querySelector('#three');
-  three.addEventListener('click', makeMove);
-  const four = document.querySelector('#four');
-  four.addEventListener('click', makeMove);
-  const five = document.querySelector('#five');
-  five.addEventListener('click', makeMove);
-  const six = document.querySelector('#six');
-  six.addEventListener('click', makeMove);
-  const seven = document.querySelector('#seven');
-  seven.addEventListener('click', makeMove);
-  const eight = document.querySelector('#eight');
-  eight.addEventListener('click', makeMove);
+  const cells = document.querySelectorAll('.cell');
+  cells.forEach(cell => cell.addEventListener('click', makeMove));
 
   // Array from each cell
   const boardArray = [zero, one, two, three, four, five, six, seven, eight];
@@ -46,7 +39,7 @@ const gameBoard = () => {
   // does makeMove need to be within this object to honor what the instructions say?
   // display a form on page load to take in player a and player b names, who will be x and who will be o, and who goes first
   // on submit (create button with eventlistener) run playerFactory with (name, indicator, turn) as arguments, taken from form
-};
+})();
 
 const playerFactory = (name, indicator, turn) => {
   const getName = () => name;
@@ -61,14 +54,6 @@ const playerFactory = (name, indicator, turn) => {
 
 const currentBoard = () => {
   // takes boardArray and creates an updated version of it each time that makeMove is run
-};
-
-const makeMove = (cell) => {
- // take which cell was clicked and update currentBoard
- // write textContent of which player (x or o) clicked it
- // then disable the event listener on that cell
- // then change to the other player's move
- // then run function of checkWin
 };
 
 const checkWin = () => {
