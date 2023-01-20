@@ -57,6 +57,16 @@ const currentBoard = () => {
 };
 
 const checkWin = () => {
+  const winningScenarios = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
   // check all winning scenarios (need to write out what these are, each an array within an array containing all the scenarios)
   // if won, run gameWon
   // if not, check if all cells full
