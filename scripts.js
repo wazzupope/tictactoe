@@ -20,7 +20,7 @@ optional - create AI opponent
 */
 
 const makeMove = (event) => {
-  console.log(event.target);
+  event.target.textContent = "o";
  // take which cell was clicked and update currentBoard
  // write textContent of which player (x or o) clicked it
  // then disable the event listener on that cell
