@@ -28,8 +28,21 @@ const makeMove = (event) => {
  // then run function of checkWin
 };
 
-const playerFactory = (event, name, indicator, turn) => {
+const playerFactory = (event) => {
+  // Prevent default action of submit button
   event.preventDefault();
+
+  // Get names from submitted form and create players
+  const player1 = document.querySelector('#player1');
+  const player2 = document.querySelector('#player2');
+  const player1Name = player1.value;
+  const player2Name = player2.value;
+
+  // Add player names alongside game board
+  const leftPlayerNameDisplay = document.querySelector('#left-player-name');
+  const rightPlayerNameDisplay = document.querySelector('#right-player-name');
+  leftPlayerNameDisplay.textContent = player1Name;
+  rightPlayerNameDisplay.textContent = player2Name;
   // const getName = () => name;
   // const getIndicator = () => indicator;
   // const getTurn = () => {
@@ -46,7 +59,7 @@ const gameBoard = (() => {
   cells.forEach(cell => cell.addEventListener('click', makeMove));
 
   // Array from each cell
-  const boardArray = Array.from(cells);
+  const boardArray = (cells) => Array.from(cells);
 
   // Player form submit handler
   const submitForm = document.querySelector('#play-button');
