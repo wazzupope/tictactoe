@@ -28,29 +28,34 @@ const makeMove = (event) => {
  // then run function of checkWin
 };
 
+const playerFactory = (event, name, indicator, turn) => {
+  event.preventDefault();
+  // const getName = () => name;
+  // const getIndicator = () => indicator;
+  // const getTurn = () => {
+  //   if (turn === "1st") {
+  //     return "1st";
+  //   }
+  //     return "2nd";
+  // };
+};
+
 const gameBoard = (() => {
   // Variables for each cell with event listeners
   const cells = document.querySelectorAll('.cell');
   cells.forEach(cell => cell.addEventListener('click', makeMove));
 
   // Array from each cell
-  const boardArray = [zero, one, two, three, four, five, six, seven, eight];
-  return boardArray;
+  const boardArray = Array.from(cells);
+
+  // Player form submit handler
+  const submitForm = document.querySelector('#play-button');
+  submitForm.addEventListener('click', playerFactory);
+
   // does makeMove need to be within this object to honor what the instructions say?
   // display a form on page load to take in player a and player b names, who will be x and who will be o, and who goes first
   // on submit (create button with eventlistener) run playerFactory with (name, indicator, turn) as arguments, taken from form
 })();
-
-const playerFactory = (name, indicator, turn) => {
-  const getName = () => name;
-  const getIndicator = () => indicator;
-  const getTurn = () => {
-    if (turn === "1st") {
-      return "1st";
-    }
-      return "2nd";
-  };
-};
 
 const currentBoard = () => {
   // takes boardArray and creates an updated version of it each time that makeMove is run
