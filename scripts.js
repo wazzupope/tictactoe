@@ -28,7 +28,7 @@ const makeMove = (event) => {
  // then run function of checkWin
 };
 
-const playerFactory = (event) => {
+const formHandler = (event) => {
   // Prevent default action of submit button
   event.preventDefault();
 
@@ -43,6 +43,10 @@ const playerFactory = (event) => {
   const rightPlayerNameDisplay = document.querySelector('#right-player-name');
   leftPlayerNameDisplay.textContent = player1Name;
   rightPlayerNameDisplay.textContent = player2Name;
+};
+
+const playerFactory = (name, indicator, turn) => {
+
   // const getName = () => name;
   // const getIndicator = () => indicator;
   // const getTurn = () => {
@@ -63,7 +67,7 @@ const gameBoard = (() => {
 
   // Player form submit handler
   const submitForm = document.querySelector('#play-button');
-  submitForm.addEventListener('click', playerFactory);
+  submitForm.addEventListener('click', formHandler);
 
   // does makeMove need to be within this object to honor what the instructions say?
   // display a form on page load to take in player a and player b names, who will be x and who will be o, and who goes first
