@@ -28,34 +28,42 @@ const makeMove = (event) => {
  // then run function of checkWin
 };
 
+const playerFactory = (name, indicator, turn) => {
+  const getName = () => name;
+  const getIndicator = () => indicator;
+  const getTurn = () => {
+    if (turn === "1st") {
+      return "1st";
+    }
+      return "2nd";
+  };
+};
+
 const formHandler = (event) => {
   // Prevent default action of submit button
   event.preventDefault();
+  playerHandler();
+};
 
+const playerHandler = {
   // Get names from submitted form and create players
-  const player1 = document.querySelector('#player1');
-  const player2 = document.querySelector('#player2');
-  const player1Name = player1.value;
-  const player2Name = player2.value;
+  player1Name: document.querySelector('#player1').value,
+  player2Name: document.querySelector('#player2').value,
 
   // Add player names alongside game board
-  const leftPlayerNameDisplay = document.querySelector('#left-player-name');
-  const rightPlayerNameDisplay = document.querySelector('#right-player-name');
-  leftPlayerNameDisplay.textContent = player1Name;
-  rightPlayerNameDisplay.textContent = player2Name;
+  leftPlayerNameDisplay: document.querySelector('#left-player-name'),
+  rightPlayerNameDisplay: document.querySelector('#right-player-name'),
+  playerNameDisplay: (function() {
+    this.leftPlayerNameDisplay.textContent = this.player1Name
+    this.rightPlayerNameDisplay.textContent = this.player2Name
+  })(),
+
+  // Run playerFactory with arguments
+  player1: playerFactory(this.player1Name, "x", "1st"),
+  player2: playerFactory(this.player2Name, "o", "2nd")
 };
 
-const playerFactory = (name, indicator, turn) => {
-
-  // const getName = () => name;
-  // const getIndicator = () => indicator;
-  // const getTurn = () => {
-  //   if (turn === "1st") {
-  //     return "1st";
-  //   }
-  //     return "2nd";
-  // };
-};
+console.log(playerHandler.player1);
 
 const gameBoard = (() => {
   // Variables for each cell with event listeners
