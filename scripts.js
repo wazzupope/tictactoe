@@ -19,23 +19,17 @@ display element that congratulates the winner
 optional - create AI opponent
 */
 
-const makeMove = (event) => {
-  event.target.textContent = "o";
- // take which cell was clicked and update currentBoard
- // write textContent of which player (x or o) clicked it
- // then disable the event listener on that cell
- // then change to the other player's move
- // then run function of checkWin
-};
-
 const playerFactory = (name, indicator, turn) => {
-  const getName = () => name;
-  const getIndicator = () => indicator;
-  const getTurn = () => {
-    if (turn === "1st") {
-      return "1st";
+  const playerName = name;
+  const playerIndicator = indicator;
+  const playerTurn = turn;
+  const changeTurn = () => {
+    if (playerTurn === "yes") {
+      playerTurn = "no";
     }
-      return "2nd";
+    else {
+      playerTurn = "yes";
+    };
   };
 };
 
@@ -44,9 +38,6 @@ const playerHandler = (event) => {
   // Get player names from form
   const player1Name = document.querySelector('#player1').value;
   const player2Name = document.querySelector('#player2').value;
-  // Create players
-  const player1 = playerFactory(player1Name, "x", "1st");
-  const player2 = playerFactory(player2Name, "o", "2nd");
   // Add player names alongside game board
   const leftPlayerNameDisplay = document.querySelector('#left-player-name');
   const rightPlayerNameDisplay = document.querySelector('#right-player-name');
@@ -55,7 +46,30 @@ const playerHandler = (event) => {
     rightPlayerNameDisplay.textContent = player2Name;
   };
   playerNameDisplay();
-  return {player1, player2};
+};
+
+// Create players
+const player1 = playerFactory(playerHandler.player1Name, "x", "yes");
+const player2 = playerFactory(playerHandler.player2Name, "o", "no");
+
+const makeMove = (event) => {
+  const selectedCell = event;
+  console.log(player1);
+  if (player1.playerTurn === "yes") {
+    selectedCell.target.textContent = "x";
+    player1.changeTurn();
+    player2.changeTurn();
+  }
+  else {
+    selectedCell.target.textContent = "o";
+    player1.changeTurn();
+    player2.changeTurn();
+  };
+ // take which cell was clicked and update currentBoard
+ // write textContent of which player (x or o) clicked it
+ // then disable the event listener on that cell
+ // then change to the other player's move
+ // then run function of checkWin
 };
 
 const gameBoard = (() => {
