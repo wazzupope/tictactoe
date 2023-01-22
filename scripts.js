@@ -31,6 +31,7 @@ const playerFactory = (name, indicator, turn) => {
       playerTurn = "yes";
     };
   };
+  return {playerName, playerIndicator, playerTurn, changeTurn}
 };
 
 const playerHandler = (event) => {
@@ -46,25 +47,29 @@ const playerHandler = (event) => {
     rightPlayerNameDisplay.textContent = player2Name;
   };
   playerNameDisplay();
+  // Create players
+  const player1 = playerFactory(player1Name, "x", "yes");
+  const player2 = playerFactory(player2Name, "o", "no");
+  return {player1Name, player2Name, player1, player2}
 };
-
-// Create players
-const player1 = playerFactory(playerHandler.player1Name, "x", "yes");
-const player2 = playerFactory(playerHandler.player2Name, "o", "no");
 
 const makeMove = (event) => {
   const selectedCell = event;
-  console.log(player1);
-  if (player1.playerTurn === "yes") {
-    selectedCell.target.textContent = "x";
-    player1.changeTurn();
-    player2.changeTurn();
-  }
-  else {
-    selectedCell.target.textContent = "o";
-    player1.changeTurn();
-    player2.changeTurn();
+  console.log(playerHandler.player1);
+  function markThenChangeTurns() {
+    if (playerHandler.player1.playerTurn === "yes") {
+      selectedCell.target.textContent = "x";
+      playerHandler.player1.changeTurn();
+      playerHandler.player2.changeTurn();
+    }
+    else {
+      selectedCell.target.textContent = "o";
+      playerHandler.player1.changeTurn();
+      playerHandler.player2.changeTurn();
+    };
   };
+  markThenChangeTurns();
+  return {selectedCell, markThenChangeTurns}
  // take which cell was clicked and update currentBoard
  // write textContent of which player (x or o) clicked it
  // then disable the event listener on that cell
