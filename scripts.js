@@ -45,25 +45,23 @@ const formHandler = (event) => {
   playerHandler();
 };
 
-const playerHandler = {
-  // Get names from submitted form and create players
-  player1Name: document.querySelector('#player1').value,
-  player2Name: document.querySelector('#player2').value,
-
+const playerHandler = () => {
+  // Get player names from form
+  const player1Name = document.querySelector('#player1').value;
+  const player2Name = document.querySelector('#player2').value;
+  // Create players
+  const player1 = playerFactory(player1Name, "x", "1st");
+  const player2 = playerFactory(player2Name, "o", "2nd");
   // Add player names alongside game board
-  leftPlayerNameDisplay: document.querySelector('#left-player-name'),
-  rightPlayerNameDisplay: document.querySelector('#right-player-name'),
-  playerNameDisplay: (function() {
-    this.leftPlayerNameDisplay.textContent = this.player1Name
-    this.rightPlayerNameDisplay.textContent = this.player2Name
-  })(),
-
-  // Run playerFactory with arguments
-  player1: playerFactory(this.player1Name, "x", "1st"),
-  player2: playerFactory(this.player2Name, "o", "2nd")
+  const leftPlayerNameDisplay = document.querySelector('#left-player-name');
+  const rightPlayerNameDisplay = document.querySelector('#right-player-name');
+  function playerNameDisplay() {
+    leftPlayerNameDisplay.textContent = player1Name;
+    rightPlayerNameDisplay.textContent = player2Name;
+  };
+  playerNameDisplay();
+  return {player1, player2};
 };
-
-console.log(playerHandler.player1);
 
 const gameBoard = (() => {
   // Variables for each cell with event listeners
