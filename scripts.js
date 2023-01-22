@@ -22,7 +22,7 @@ optional - create AI opponent
 const playerFactory = (name, indicator, turn) => {
   const playerName = name;
   const playerIndicator = indicator;
-  const playerTurn = turn;
+  let playerTurn = turn;
   const changeTurn = () => {
     if (playerTurn === "yes") {
       playerTurn = "no";
