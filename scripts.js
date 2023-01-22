@@ -39,13 +39,8 @@ const playerFactory = (name, indicator, turn) => {
   };
 };
 
-const formHandler = (event) => {
-  // Prevent default action of submit button
+const playerHandler = (event) => {
   event.preventDefault();
-  playerHandler();
-};
-
-const playerHandler = () => {
   // Get player names from form
   const player1Name = document.querySelector('#player1').value;
   const player2Name = document.querySelector('#player2').value;
@@ -73,7 +68,7 @@ const gameBoard = (() => {
 
   // Player form submit handler
   const submitForm = document.querySelector('#play-button');
-  submitForm.addEventListener('click', formHandler);
+  submitForm.addEventListener('click', playerHandler);
 
   // does makeMove need to be within this object to honor what the instructions say?
   // display a form on page load to take in player a and player b names, who will be x and who will be o, and who goes first
