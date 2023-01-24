@@ -22,13 +22,14 @@ optional - create AI opponent
 const playerFactory = (name, indicator, turn) => {
   const playerName = name;
   const playerIndicator = indicator;
-  let playerTurn = turn;
-  const changeTurn = () => {
-    if (playerTurn === "yes") {
-      playerTurn = "no";
+  const playerTurn = turn;
+  const changeTurn = (player) => {
+    const thisPlayer = player;
+    if (thisPlayer.playerTurn === "yes") {
+      thisPlayer.playerTurn = "no";
     }
     else {
-      playerTurn = "yes";
+      thisPlayer.playerTurn = "yes";
     };
   };
   return {playerName, playerIndicator, playerTurn, changeTurn}
@@ -66,13 +67,13 @@ const makeMove = (event) => {
   function markThenChangeTurns() {
     if (player1.playerTurn === "yes") {
       selectedCell.target.textContent = "x";
-      player1.changeTurn();
-      player2.changeTurn();
+      player1.changeTurn(player1);
+      player2.changeTurn(player2);
     }
     else {
       selectedCell.target.textContent = "o";
-      player1.changeTurn();
-      player2.changeTurn();
+      player1.changeTurn(player1);
+      player2.changeTurn(player2);
     };
   };
   markThenChangeTurns();
