@@ -77,9 +77,9 @@ const makeMove = (event) => {
     };
   };
   markThenChangeTurns();
+  selectedCell.target.removeEventListener('click', makeMove);
   return {selectedCell, markThenChangeTurns}
  // take which cell was clicked and update currentBoard
- // write textContent of which player (x or o) clicked it
  // then disable the event listener on that cell
  // then change to the other player's move
  // then run function of checkWin
