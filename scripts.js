@@ -34,11 +34,16 @@ const playerFactory = (name, indicator, turn) => {
   return {playerName, playerIndicator, playerTurn, changeTurn}
 };
 
+// Get player names from form
+const player1Name = document.querySelector('#player1').value;
+const player2Name = document.querySelector('#player2').value;
+
+// Create players
+const player1 = playerFactory(player1Name, "x", "yes");
+const player2 = playerFactory(player2Name, "o", "no");
+
 const playerHandler = (event) => {
   event.preventDefault();
-  // Get player names from form
-  const player1Name = document.querySelector('#player1').value;
-  const player2Name = document.querySelector('#player2').value;
   // Add player names alongside game board
   const leftPlayerNameDisplay = document.querySelector('#left-player-name');
   const rightPlayerNameDisplay = document.querySelector('#right-player-name');
@@ -47,25 +52,20 @@ const playerHandler = (event) => {
     rightPlayerNameDisplay.textContent = player2Name;
   };
   playerNameDisplay();
-  // Create players
-  const player1 = playerFactory(player1Name, "x", "yes");
-  const player2 = playerFactory(player2Name, "o", "no");
-  return {player1Name, player2Name, player1, player2}
 };
 
 const makeMove = (event) => {
   const selectedCell = event;
-  console.log(playerHandler.player1);
   function markThenChangeTurns() {
-    if (playerHandler.player1.playerTurn === "yes") {
+    if (player1.playerTurn === "yes") {
       selectedCell.target.textContent = "x";
-      playerHandler.player1.changeTurn();
-      playerHandler.player2.changeTurn();
+      player1.changeTurn();
+      player2.changeTurn();
     }
     else {
       selectedCell.target.textContent = "o";
-      playerHandler.player1.changeTurn();
-      playerHandler.player2.changeTurn();
+      player1.changeTurn();
+      player2.changeTurn();
     };
   };
   markThenChangeTurns();
