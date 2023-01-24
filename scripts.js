@@ -80,8 +80,6 @@ const makeMove = (event) => {
   selectedCell.target.removeEventListener('click', makeMove);
   return {selectedCell, markThenChangeTurns}
  // take which cell was clicked and update currentBoard
- // then disable the event listener on that cell
- // then change to the other player's move
  // then run function of checkWin
 };
 
@@ -97,14 +95,17 @@ const gameBoard = (() => {
   const submitForm = document.querySelector('#play-button');
   submitForm.addEventListener('click', playerHandler);
 
-  // does makeMove need to be within this object to honor what the instructions say?
-  // display a form on page load to take in player a and player b names, who will be x and who will be o, and who goes first
-  // on submit (create button with eventlistener) run playerFactory with (name, indicator, turn) as arguments, taken from form
+  return {boardArray};
 })();
 
+console.log(gameBoard.boardArray);
+
 const currentBoard = () => {
+  const newBoard = gameBoard.boardArray;
+  console.log(newBoard[0]);
   // takes boardArray and creates an updated version of it each time that makeMove is run
 };
+currentBoard();
 
 const checkWin = () => {
   const winningScenarios = [
