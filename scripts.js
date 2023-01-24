@@ -34,9 +34,15 @@ const playerFactory = (name, indicator, turn) => {
   return {playerName, playerIndicator, playerTurn, changeTurn}
 };
 
+// Declare player name variables
+let player1Name = "Player 1";
+let player2Name = "Player 2";
+
 // Get player names from form
-const player1Name = document.querySelector('#player1').value;
-const player2Name = document.querySelector('#player2').value;
+function updatePlayerName() {
+  player1Name = document.querySelector('#player1').value;
+  player2Name = document.querySelector('#player2').value;
+}
 
 // Create players
 const player1 = playerFactory(player1Name, "x", "yes");
@@ -51,6 +57,7 @@ const playerHandler = (event) => {
     leftPlayerNameDisplay.textContent = player1Name;
     rightPlayerNameDisplay.textContent = player2Name;
   };
+  updatePlayerName();
   playerNameDisplay();
 };
 
