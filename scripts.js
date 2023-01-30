@@ -1,4 +1,7 @@
 /*
+
+***RESUME WORK AT currentBoard FUNCTION AROUND LINE 100***
+
 x gameboard is an array inside of gameboard object
 x players will also be objects (just player A and player B to start, both to be controlled by human, later can add functionality for CPU)
 object to store the flow of the game itself
@@ -89,7 +92,7 @@ const gameBoard = (() => {
   cells.forEach(cell => cell.addEventListener('click', makeMove));
 
   // Array from each cell
-  const boardArray = (cells) => Array.from(cells);
+  const boardArray = Array.from(cells);
 
   // Player form submit handler
   const submitForm = document.querySelector('#play-button');
@@ -97,8 +100,6 @@ const gameBoard = (() => {
 
   return {boardArray};
 })();
-
-console.log(gameBoard.boardArray);
 
 const currentBoard = () => {
   const newBoard = gameBoard.boardArray;
